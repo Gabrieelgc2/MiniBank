@@ -34,7 +34,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
         newClient.setEndereco(data.endereco());
         newClient.setSaldo(new BigDecimal("50.00"));
         newClient.setNumeroConta(new Random().nextLong(900000) + 100000); // entre 100000 e 999999
-        
+
         var passwordHashred = BCrypt.withDefaults().
             hashToString(12, 
             data.senha().
@@ -44,5 +44,9 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
         var clientCreated = this.clientRepository.save(newClient);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(clientCreated);
+    }
+        public void setDados(String nome, String email, String cpf, String endereco, BigDecimal saldo, 
+        Long numeroConta){
+            
     }
 }

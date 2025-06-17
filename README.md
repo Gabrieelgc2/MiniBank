@@ -28,7 +28,7 @@ To get the MiniBank application up and running on your local machine, follow the
 3. Start the application with Docker Compose:
    > docker-compose up -d
 
-4. To shutdown the application:
+4. If you want to shutdown the application:
    > docker compose down
 ## Accessing the Application
 - The Spring Boot application should be accessible at http://localhost:8081.

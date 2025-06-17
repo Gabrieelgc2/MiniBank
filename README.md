@@ -19,7 +19,7 @@ To get the MiniBank application up and running on your local machine, follow the
 - Docker you can download in [here](https://www.docker.com/products/docker-desktop/) and choose a docker that is compatible to your OS
 
 ### Installation
-1. Clone the repository:a
+1. Clone the repository:
    > git clone [https://github.com/Gabrieelgc2/MiniBank.git](https://github.com/Gabrieelgc2/MiniBank.git)
 
 2. Accessing the directory:

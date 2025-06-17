@@ -38,7 +38,6 @@ public class FiltroGeral extends OncePerRequestFilter {
             var authString = new String(authDecode);
             System.out.println("Authorization");
             System.out.println(authString);
-
             String[] credentials = authString.split(":");
             String username = credentials[0];
             String password = credentials[1];
@@ -62,7 +61,7 @@ public class FiltroGeral extends OncePerRequestFilter {
                     if (passwordVerify.verified) {
                         request.setAttribute("idUser", user.getId());
                         request.setAttribute("saldo", user.getSaldo());
-                        filterChain.doFilter(request, response);
+                        lterChain.doFilter(request, response);
                     } else {
                         response.setStatus(401);
                         response.setContentType("application/json");

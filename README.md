@@ -36,12 +36,12 @@ The MySQL database will be running on localhost:3306. You can use a tool like My
 ## API Endpoints and Functionalities
 This section details the core functionalities and their respective endpoints.
 
-### 1 Requirement – User Registration (/users/register)
+### 1 Requirement – User Registration (/create)
 - Any person can open an account by providing basic data: name, CPF, address, email, and password.
 - CPF must be unique (no duplication allowed).
 - For each registration, a sequential account number is created.
 - New accounts start with a bonus balance of R$ 50,00 to attract new clients.
-### 2 Requirement – Authentication (/auth/login)
+### 2 Requirement – Authentication (/login)
 - Once an account is created, the user must authenticate with their account number (sequentially created) and password.
 - Managers can authenticate with the fixed account number "gerencia" and any fixed password; this user does not need to be actually registered in the database.
 ### 3 Requirement – Client: Account Balance and Transactions (/account/{accountNumber}/balance, /account/{accountNumber}/transactions)

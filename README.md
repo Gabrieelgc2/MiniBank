@@ -55,7 +55,7 @@ This section details the core functionalities and their respective endpoints.
 - The general public can request loans by providing the desired amount and reason.
 ### 6 Requirement – Manager: View Loan Applications (/verEmprestimo) - GET
 - Managers can view all loan requests and their respective statuses (PENDING, ACCEPTED, REJECTED).
-### 7 Requirement – Manager: Accept or Reject Loan Applications (/emprestimos{id}/status) - PATCH
+### 7 Requirement – Manager: Accept or Reject Loan Applications (/emprestimos/{id}/status) - PATCH
 - Managers can modify the loan status to ACCEPTED or REJECTED.
 - If the loan is accepted, the amount must be reflected in the account of the user who requested it.
 ## Technology Stack

@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.squad21.pitang.User.Client.ClientModel.ClientModel;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager; /* O EntityManager é a principal interface para interagir com o banco de dados, 
+                                          permitindo criar, ler, atualizar e deletar entidades. */
+import jakarta.persistence.PersistenceContext; /* 
+                                                                                                 */
 import jakarta.transaction.Transactional;
 
 @Service
@@ -30,8 +32,7 @@ public class TransferService {
         ClientModel destino = em.createQuery("SELECT c FROM Client c WHERE c.numeroConta = :num", ClientModel.class)
                                 .setParameter("num", numeroContaDestino)
                                 .getSingleResult();
-// 209760
-// 505092     
+
         // Validar saldo
         if (origem.getSaldo().compareTo(valor) < 0) {
             throw new IllegalArgumentException("Saldo insuficiente na conta de origem.");

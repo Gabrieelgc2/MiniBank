@@ -1,5 +1,4 @@
 package com.squad21.pitang.Emprestimo;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,11 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.squad21.pitang.User.Client.ClientController.ClientRepository.ClientRepository;
-import com.squad21.pitang.User.Client.ClientModel.ClientModel;
-import com.squad21.pitang.Emprestimo.EmprestimoModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.var;
 @Service
 public class EmprestimoService{
     @Autowired
@@ -35,6 +31,7 @@ public class EmprestimoService{
 
         return ResponseEntity.status(HttpStatus.CREATED).body(EmprestimoCreated);
         }
+        
     }
         public List<EmprestimoModel> getAllUsers() {
             return emprestimoRepository.findAll();

@@ -14,7 +14,7 @@ public class AlterarEmprestimoController {
     private AlterarEmprestimoService alterarEmprestimoService;
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<?> updateStatuss(@PathVariable UUID id,@RequestBody EmprestimoStatusDTO dto) {
+    public ResponseEntity<?> updateStatuss(@PathVariable UUID id, @RequestBody EmprestimoStatusDTO dto) {
         return alterarEmprestimoService.updateStatus(id, dto);
     }
 }

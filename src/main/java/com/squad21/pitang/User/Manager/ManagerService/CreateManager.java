@@ -20,7 +20,7 @@ import jakarta.annotation.PostConstruct;
         MnModel newClient = new MnModel();
         newClient.setNome("gerente");
         newClient.setSenha("gerencia");
-
+        
         var passwordHashred = BCrypt.withDefaults().
             hashToString(12, 
             newClient.getSenha().

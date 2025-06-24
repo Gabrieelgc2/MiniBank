@@ -1,7 +1,6 @@
 package com.squad21.pitang.User.Client.ClientController.ClientRepository;
 
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;

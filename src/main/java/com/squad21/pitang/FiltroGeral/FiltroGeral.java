@@ -45,51 +45,42 @@ public class FiltroGeral extends OncePerRequestFilter {
             System.out.println(username);
             System.out.println(password);
 
-            Long numeroConta;
-            // Primeiro tenta converter o username para Long
-            try {
-                numeroConta = Long.parseLong(username);
-                // Verifica se o usuário é um cliente
-                var user = clientRepository.findByNumeroConta(numeroConta);
-                if (user == null) {
-                    response.setStatus(401);
-                    response.setContentType("application/json");
-                    response.getWriter().write("{\"error\": \"Usuário não encontrado.\"}");
-                    return;
-                } else {
+            // Verifica se o usuário é um cliente
+                var user = clientRepository.findByCpf(username);
+                if (user != null) {
                     // Valida a senha do cliente
                     var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getSenha());
                     if (passwordVerify.verified) {
                         request.setAttribute("idUser", user.getId());
                         request.setAttribute("saldo", user.getSaldo());
                         filterChain.doFilter(request, response);
+                        return;
                     } else {
                         response.setStatus(401);
                         response.setContentType("application/json");
                         response.getWriter().write("{\"error\": \"Senha incorreta!\"}");
+                        return;
                     }
                 }
-            } catch (NumberFormatException exception) {
-                // Caso o username não seja um número, tenta buscar o gerente
+                // Se o cliente não for encontrado procura o gerente.
                 var gerente = managerRepository.findBynome(username);
-                if (gerente == null) {
+                if (gerente == null) {  
                     response.setStatus(401);
                     response.setContentType("application/json");
                     response.getWriter().write("{\"error\": \"Usuário não encontrado.\"}");
-                    return;
                 } else {
                     // Valida a senha do gerente
                     var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), gerente.getSenha());
                     if (passwordVerify.verified) {
                         request.setAttribute("idUser", gerente.getId());
                         filterChain.doFilter(request, response);
+                        return;
                     } else {
                         response.setStatus(401);
                         response.setContentType("application/json");
                         response.getWriter().write("{\"error\": \"Senha incorreta!\"}");
                     }
                 }
-            }
         } else {
             filterChain.doFilter(request, response);
         }

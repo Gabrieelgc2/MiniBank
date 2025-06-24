@@ -1,19 +1,14 @@
 package com.squad21.pitang.Emprestimo;
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.squad21.pitang.User.Client.ClientModel.ClientModel;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 @Data
 @Entity(name = "EmprestimoClient")
 public class EmprestimoModel{

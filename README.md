@@ -45,11 +45,11 @@ This section details the core functionalities and their respective endpoints.
 - Once an account is created, the user must authenticate with their account number (sequentially created) and password.
 - Managers can authenticate with the fixed account number "gerencia" and any fixed password; this user does not need to be actually registered in the database.
 ### 3 Requirement – Client: Account Balance and Transactions (/account/{accountNumber}/balance, /account/{accountNumber}/transactions) - GET
-- After authentication, clients can view their account balance.
-- It should also be possible to view transfers made and received.
+- After authentication, clients can view their account balance. **FALTA**
+- It should also be possible to view transfers made and received. **FALTA**
 ### 4 Requirement – Client: Fund Transfer (/transferencias) - POST
 - Clients can transfer funds to other MiniBank accounts, provided they have sufficient balance.
-- Transfers should appear for the sending user as an "amount sent" and for the receiving user as an "amount received".
+- Transfers should appear for the sending user as an "amount sent" and for the receiving user as an "amount received". - **FALTA**
 - Upon completion of the transfer, the new balance must be reflected for both users involved in the transaction.
 ### 5 Requirement – Client: Loan Request (/emprestimo) - POST
 - The general public can request loans by providing the desired amount and reason.
@@ -57,7 +57,7 @@ This section details the core functionalities and their respective endpoints.
 - Managers can view all loan requests and their respective statuses (PENDING, ACCEPTED, REJECTED).
 ### 7 Requirement – Manager: Accept or Reject Loan Applications (/emprestimos/{id}/status) - PATCH
 - Managers can modify the loan status to ACCEPTED or REJECTED.
-- If the loan is accepted, the amount must be reflected in the account of the user who requested it.
+- If the loan is accepted, the amount must be reflected in the account of the user who requested it. - **FALTA**
 ## Technology Stack
 - Backend: Spring Boot (Java)
 - Database: MySQL

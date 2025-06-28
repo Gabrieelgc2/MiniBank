@@ -45,7 +45,7 @@ This section details the core functionalities and their respective endpoints.
 - Once an account is created, the user must authenticate with their account number (sequentially created) and password.
 - Managers can authenticate with the fixed account number "gerencia" and any fixed password; this user does not need to be actually registered in the database.
 ### 3 Requirement – Client: Account Balance and Transactions (/account/{accountNumber}/balance, /account/{accountNumber}/transactions) - GET
-- After authentication, clients can view their account balance. **FALTA**
+- After authentication, clients can view their account balance.
 - It should also be possible to view transfers made and received. **FALTA**
 ### 4 Requirement – Client: Fund Transfer (/transferencias) - POST
 - Clients can transfer funds to other MiniBank accounts, provided they have sufficient balance.

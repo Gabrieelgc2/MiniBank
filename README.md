@@ -64,7 +64,7 @@ E.g:
     For client: 46326463120 and password: teste2
       
     For manager: manager and password: password
-### 3 Requirement – Client: Account Balance and Transactions (/account/{id}/balance, /seeTransactions/numberAccount) - GET
+### 3 Requirement – Client: Account Balance and Transactions (/account/{id}/balance, seeTransactions/numberAccount) - GET
 - After authentication, clients can view their account balance.
 - It should also be possible to view transfers made and received.
 ### 4 Requirement – Client: Fund Transfer (/transfer) - POST

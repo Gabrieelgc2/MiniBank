@@ -16,9 +16,7 @@ services:
       - "3306:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "db", "-u", "root", "-p{MYSQL_ROOT_PASSWORD}"] 
-      # A senha é vista depois de um tempo no log
-      # O comando root@localhost empty password é um comando normal, pois ainda não está configurado totalmente.
-      interval: 10s
+      interval: 1000s
       timeout: 5s
       retries: 5
-      start_period: 30s 
+      start_period: 1000s 

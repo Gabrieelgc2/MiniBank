@@ -86,19 +86,19 @@ Exemplo:
 
 Exemplo:
 
-```json
+```
 {  
   "sourceAccount": 207501,
   "destinationAccount": 948937,
   "value": 10
 }
-
+```
 ### Requisito 5 – Cliente: Solicitação de Empréstimo (/loan) - POST
 - O público em geral pode solicitar empréstimos fornecendo o valor desejado e o motivo.
 
 Exemplo:
 
-```json
+```
 {
   "value": 400,
   "reason": "não sei"

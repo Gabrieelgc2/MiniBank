@@ -1,6 +1,7 @@
 # MiniBank
 - An innovative fintech application designed to provide simple, accessible financial services to the unbanked population. In response to recent financial regulations that have paved the way for fully digital, fast, and less bureaucratic account opening, MiniBank aims to attract a large user base with its streamlined features.
 
+- [Portuguese (Brasil)](READMEptbr.md)
 ## Features
 ### For Clients (Users)
 - Account Opening: Easily open a new digital bank account.
@@ -35,6 +36,16 @@ To get the MiniBank application up and running on your local machine, follow the
    > docker compose down
 ## Accessing the Application
 - The Spring Boot application should be accessible at http://localhost:8081.
+
+## How to acess the database(MYSQL)
+1. > docker ps (to see the name of the containers)
+2. > docker exec -it [name of the database usually is minibank-db-1] bash 
+3. > mysql -u root -p | password: casa123
+4. > SHOW DATABASES;
+5. > USE pitangdb;
+6. > SHOW TABLES;
+7. > SELECT * FROM [insert the table that you want]\G;
+
 ## API Endpoints and Functionalities
 This section details the core functionalities and their respective endpoints.
 

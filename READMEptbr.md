@@ -116,7 +116,7 @@ Exemplo:
 
 ```
 {         
-  "status": "ACEITO"
+  "status": "APPROVED"
 
 }
 ```

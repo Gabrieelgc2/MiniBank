@@ -1,122 +1,189 @@
-# MiniBank
-- An innovative fintech application designed to provide simple, accessible financial services to the unbanked population. In response to recent financial regulations that have paved the way for fully digital, fast, and less bureaucratic account opening, MiniBank aims to attract a large user base with its streamlined features.
+# 🏦 MiniBank
 
-- [Portuguese (Brasil)](READMEptbr.md)
-## Features
-### For Clients (Users)
-- Account Opening: Easily open a new digital bank account.
-- Fund Transfers: Seamlessly transfer funds from your MiniBank account to other MiniBank account holders.
-- Loan Requests: Submit requests for small loans directly through the application.
+## ✨ Innovation and Financial Accessibility
 
-### For Managers
-- View Loan Applications: Managers can view all submitted loan requests.
-- Approve/Reject Loans: Managers have the authority to approve or reject loan applications.
+**MiniBank** is an innovative fintech application designed to provide **simple, accessible financial services** to the unbanked population. Capitalizing on recent financial regulations that have paved the way for fully digital, fast, and less bureaucratic account opening, MiniBank aims to attract a wide user base with its streamlined features.
 
+  * **[Portuguese (Brasil) Version](https://www.google.com/search?q=READMEptbr.md)**
 
-## Getting Started
-To get the MiniBank application up and running on your local machine, follow these steps:
+-----
 
-### Prerequisites
-- Docker you can download in [here](https://www.docker.com/products/docker-desktop/) and choose a docker that is compatible to your OS
+## 🚀 Core Features
 
-### Installation
-1. Clone the repository:
-   > git clone [https://github.com/Gabrieelgc2/MiniBank.git](https://github.com/Gabrieelgc2/MiniBank.git)
+| Category | Feature | Description |
+| :--- | :--- | :--- |
+| **Clients** | **Account Opening** | Quick and easy process to get a new digital bank account. |
+| **Clients** | **Fund Transfers** | Seamlessly send funds to other MiniBank account holders. |
+| **Clients** | **Loan Request** | Submit requests for small loans directly through the application. |
+| **Managers** | **View Applications** | Access all submitted loan requests and their status. |
+| **Managers** | **Approve/Reject** | Authority to modify the status of a loan application. |
 
-2. Accessing the directory:
-   > cd MiniBank  
+-----
 
-3. Build the application with Docker Compose:
-   > docker-compose up --build -d
+## 🛠️ Getting Started Guide
 
-4. Start the application with:
-   > docker-compose up 
+Follow the steps below to get the MiniBank application up and running on your local machine.
 
-5. If you want to shutdown the application:
-   > docker compose down
-## Accessing the Application
-- The Spring Boot application should be accessible at http://localhost:8081.
+### 📋 Prerequisites
 
-## How to acess the database(MYSQL)
-1. > docker ps (to see the name of the containers)
-2. > docker exec -it [name of the database usually is minibank-db-1] bash 
-3. > mysql -u root -p | password: casa123
-4. > SHOW DATABASES;
-5. > USE pitangdb;
-6. > SHOW TABLES;
-7. > SELECT * FROM [insert the table that you want]\G;
+Ensure you have **Docker** installed.
 
-## API Endpoints and Functionalities
+  * **Docker Desktop:** You can download it [here](https://www.docker.com/products/docker-desktop/) and choose the version compatible with your OS.
+
+### ⚙️ Installation and Execution
+
+1.  **Clone the repository:**
+    ```bash
+    > git clone https://github.com/Gabrieelgc2/MiniBank.git
+    ```
+2.  **Access the directory:**
+    ```bash
+    > cd MiniBank
+    ```
+3.  **Build and start the application in the background (detached mode):**
+    ```bash
+    > docker-compose up --build -d
+    ```
+4.  **To follow logs and keep the application in the foreground (optional):**
+    ```bash
+    > docker-compose up
+    ```
+5.  **To shut down the application and remove containers:**
+    ```bash
+    > docker compose down
+    ```
+
+### 🌐 Accessing the Application
+
+The Spring Boot application should be accessible at:
+**`http://localhost:8081`**
+
+-----
+
+## 🗃️ Accessing the Database (MySQL)
+
+To inspect the database directly:
+
+1.  Check the names of the running containers:
+    ```bash
+    > docker ps
+    ```
+    (The database container name is usually `minibank-db-1`).
+2.  Access the database container shell:
+    ```bash
+    > docker exec -it [database container name, e.g., minibank-db-1] bash
+    ```
+3.  Enter the MySQL client (the password is `casa123`):
+    ```bash
+    > mysql -u root -p
+    ```
+4.  Useful commands:
+    ```sql
+    mysql> SHOW DATABASES;
+    mysql> USE pitangdb;
+    mysql> SHOW TABLES;
+    mysql> SELECT * FROM [table name]\G;
+    ```
+
+-----
+
+## 📊 API Endpoints and Detailed Functionalities
+
 This section details the core functionalities and their respective endpoints.
 
-### 1 Requirement – User Registration (/create) - POST
-- Any person can open an account by providing basic data: name, CPF, address, email, and password.
-- CPF must be unique (no duplication allowed).
-- For each registration, a sequential account number is created.
-- New accounts start with a bonus balance of R$ 50,00 to attract new clients.
+### 1\. User Registration (`/create`) - `POST` 📝
 
-E.g:
+  * Any person can open an account by providing: **name, CPF, address, email, and password.**
+  * The **CPF must be unique** (no duplication allowed).
+  * A **sequential account number** is created for each new registration.
+  * **Bonus:** New accounts start with a bonus balance of **R$ 50.00** to attract new clients.
 
-    {
+**Example Body**:
 
-    "name" : "Teste1",
-    "cpf" : "46326463120",
-    "email" : "RodrigoPereira@Jequitinhonha",
-    "address" : "teste",
-    "password" : "teste2"
+```json
+{
+  "name" : "Teste1",
+  "cpf" : "46326463120",
+  "email" : "rodrigo.pereira@example.com",
+  "address" : "Test Street, 123",
+  "password" : "securePassword123"
+}
+```
 
-    }
-### 2 Requirement – Authentication (/login) - GET
-- Once an account is created, the user must authenticate with their account number (sequentially created) and password.
-- Managers can authenticate with the fixed account number "gerencia" and any fixed password; this user does not need to be actually registered in the database.
+### 2\. Authentication (`/login`) - `GET` 🔑
 
-E.g:
-   
-    For client: 46326463120 and password: teste2
-      
-    For manager: manager and password: password
-### 3 Requirement – Client: Account Balance and Transactions (/account/{id}/balance, seeTransactions/numberAccount) - GET
-- After authentication, clients can view their account balance.
-- It should also be possible to view transfers made and received.
-### 4 Requirement – Client: Fund Transfer (/transfer) - POST
-- Clients can transfer funds to other MiniBank accounts, provided they have sufficient balance.
-- Transfers should appear for the sending user as an "amount sent" and for the receiving user as an "amount received".
-- Upon completion of the transfer, the new balance must be reflected for both users involved in the transaction.
+  * Clients authenticate with their **account number** and **password**.
+  * **Managers** authenticate using the fixed account number **`manager`** and the fixed password **`password`** (this user does not need to be registered in the database).
 
-E.g:
-  
-    {  
-    "sourceAccount" : 207501,
-    "destinationAccount" : 948937,
-    "value" : 10
+**Example Credentials:**
 
-    }
-### 5 Requirement – Client: Loan Request (/loan) - POST
-- The general public can request loans by providing the desired amount and reason.
+| User | Account/CPF | Password |
+| :--- | :--- | :--- |
+| **Client** | 46326463120 | teste2 |
+| **Manager** | manager | password |
 
-E.g:
+### 3\. Client: Account Balance and Transactions (`/account/{id}/balance`, `seeTransactions/numberAccount`) - `GET` 💰
 
-    {
-    "value" : 400,
-    "reason" : "i don't know"
-    }
-### 6 Requirement – Manager: View Loan Applications (/checkLoan) - GET
-- Managers can view all loan requests and their respective statuses (PENDING, ACCEPTED, REJECTED).
-### 7 Requirement – Manager: Accept or Reject Loan Applications (/loan/{id}/status) - PATCH
-- Managers can modify the loan status to ACCEPTED or REJECTED.
-- If the loan is accepted, the amount must be reflected in the account of the user who requested it.
+  * After authentication, clients can view their **current account balance**.
+  * It is also possible to view a **statement** of transfers made and received.
 
-E.g:
+### 4\. Client: Fund Transfer (`/transfer`) - `POST` ➡️
 
-    {         
-    "status" : "APPROVED"
-    }
+  * Clients can transfer funds to **other MiniBank accounts**, provided they have sufficient balance.
+  * The transaction should be recorded as "amount sent" for the sender and "amount received" for the recipient.
+  * The new balance must be reflected for both users after completion.
 
+**Example Body**:
 
-## Technology Stack
-- Backend: Spring Boot (Java)
-- Database: MySQL
-- Containerization: Docker, Docker Compose
-- Cloud computing: Aws
-#### Contributing
-We welcome contributions to the MiniBank project! If you'd like to contribute, please feel free to fork the repository, make your changes, and submit a pull request.
+```json
+{
+  "sourceAccount" : 207501,
+  "destinationAccount" : 948937,
+  "value" : 10
+}
+```
+
+### 5\. Client: Loan Request (`/loan`) - `POST` 💸
+
+  * The general public can request loans by providing the **desired amount** and the **reason**.
+
+**Example Body**:
+
+```json
+{
+  "value" : 400,
+  "reason" : "Emergency house repair"
+}
+```
+
+### 6\. Manager: View Loan Applications (`/checkLoan`) - `GET` 📋
+
+  * Managers can view **all** loan requests and their respective statuses (PENDING, ACCEPTED, REJECTED).
+
+### 7\. Manager: Accept or Reject Loan Applications (`/loan/{id}/status`) - `PATCH` ✅❌
+
+  * Managers can modify the loan status to **`APPROVED`** or **`REJECTED`**.
+  * If the loan is **accepted**, the amount must be **credited** to the account of the requesting user.
+
+**Example Body**:
+
+```json
+{
+  "status" : "APPROVED"
+}
+```
+
+-----
+
+## 💻 Technology Stack
+
+  * **Backend:** **Spring Boot (Java)**
+  * **Database:** **MySQL**
+  * **Containerization:** **Docker, Docker Compose**
+  * **Cloud Computing:** **AWS**
+
+-----
+
+## 🤝 Contributing
+
+We welcome contributions to the MiniBank project\! If you'd like to contribute, please feel free to **fork** the repository, implement your changes, and submit a **Pull Request**.

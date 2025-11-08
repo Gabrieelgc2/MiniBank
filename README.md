@@ -4,7 +4,7 @@
 
 **MiniBank** is an innovative fintech application designed to provide **simple, accessible financial services** to the unbanked population. Capitalizing on recent financial regulations that have paved the way for fully digital, fast, and less bureaucratic account opening, MiniBank aims to attract a wide user base with its streamlined features.
 
-  * **[Portuguese (Brasil) Version](https://www.google.com/search?q=READMEptbr.md)**
+  * **[Portuguese (Brasil) Version](READMEptbr.md)**
 
 -----
 
